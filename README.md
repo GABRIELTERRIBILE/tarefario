@@ -1,4 +1,4 @@
-# todo list - Tarefario
+# to do list - Tarefario
 
 ## Project setup
 ```
