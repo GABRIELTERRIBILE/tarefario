@@ -6,7 +6,7 @@
                 @taskStateChanged="$emit('taskStateChanged', i)"
                 :task="task"></Task>
         </template>
-        <p v-else class="no-task">Sua vida está em dia :)</p>
+        <p v-else class="no-task">Sua vida está em dia! ✓</p>
     </div>
 </template>
 
@@ -33,7 +33,7 @@ export default {
     }
 
     .no-task {
-        color: #AAA;
+        color: rgb(0, 0, 0);
         font-size: 1.7rem;
     }
 </style>

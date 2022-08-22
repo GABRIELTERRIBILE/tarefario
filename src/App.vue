@@ -1,6 +1,10 @@
 <template>
 	<div id="app">
-		<h1>Tarefario</h1>
+		<h1>Tarefario
+			<transition name="fade">
+          <small v-if="incomplete">({{ incomplete }})</small>
+        </transition>
+		</h1>
 		<TasksProgress :progress="progress" />
 		<NewTask @taskAdded="addTask" />
 		<TaskGrid :tasks="tasks"
@@ -27,6 +31,9 @@ export default {
 			const done = this.tasks.filter(t => !t.pending).length
 			return Math.round(done / total * 100) || 0
 		}
+		// incomplete() {
+		// 	return this.task.filter(this.pending).length;
+		// }
 	},
 	watch: {
 		tasks: {
@@ -65,8 +72,8 @@ export default {
 <style>
 	body {
 		font-family: 'Lato', sans-serif;
-		background: linear-gradient(to right, rgb(1, 1, 172), rgb(66, 68, 199));
-		color: rgb(0, 0, 0);
+		background: linear-gradient(to right, rgb(48, 175, 158), rgb(41, 170, 164));
+		color: rgb(253, 253, 253);
 	}
 
 	#app {

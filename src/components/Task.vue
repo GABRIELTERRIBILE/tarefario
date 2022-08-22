@@ -1,12 +1,14 @@
 <template>
-    <div @click="$emit('taskStateChanged', task)"
-        class="task" :class="stateClass">
-        <span @click.stop="$emit('taskDeleted', task)" class="close">x</span>
-        <p>{{ task.name }}</p>
+    <div 
+        @click="$emit('taskStateChanged', task)"
+            class="task" :class="stateClass">
+            <span @click="$emit('taskDeleted', task)" class="close">x</span>
+                <p>{{ task.name }}</p>
     </div>
 </template>
 
 <script>
+
 export default {
     props: {
         task: { type: Object, required: true }
@@ -20,7 +22,9 @@ export default {
         }
     }
 }
+
 </script>
+
 
 <style>
     .task {
@@ -34,8 +38,8 @@ export default {
         font-weight: 300;
         cursor: pointer;
         user-select: none;
-        display: flex;
-        justify-content: center;
+        display:flex;
+        justify-content:center;
         align-items: center;
     }
 
@@ -47,18 +51,15 @@ export default {
     .done {
         color: #DDD;
         border-left: 12px solid #0A8F08;
-        background-color: #4CAF50;
+        background-color: #4caf50;
         text-decoration: line-through;
     }
-
-    .pending .close {
+    .pending.close {
         background-color: #B73229;
     }
-
-    .done .close {
+    .done.close {
         background-color: #0A8F08;
     }
-
     .close {
         position: absolute;
         right: 10px;
@@ -71,4 +72,4 @@ export default {
         display: flex;
         justify-content: center;
     }
-</style>
+    </style>
