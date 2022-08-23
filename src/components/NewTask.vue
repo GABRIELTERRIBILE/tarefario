@@ -1,5 +1,6 @@
 <template>
     <div class="new-task">
+        <Message :msg="msg" v-show="msg" />
         <input v-model="name" @keydown.enter="add" type="text"
             class="form-element" placeholder="Nova tarefa?">
         <button class="form-element" @click="add">+</button>
@@ -7,17 +8,24 @@
 </template>
 
 <script>
+import Message from './Message.vue'
 export default {
+  components: { Message },
     data() {
         return {
-            name: ''
+            name: '',
+            msg: ''
         }
     },
     methods: {
         add() {
             this.$emit('taskAdded', { name: this.name })
             this.name = ''
-        }
+            this.msg = 'Tarefa cadastrada com sucesso!'
+		setTimeout(() => this.msg = "", 5000);
+
+       },
+
     }
 }
 </script>

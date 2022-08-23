@@ -1,10 +1,12 @@
 <template>
-    <div 
-        @click="$emit('taskStateChanged', task)"
+    <transition name="appear">
+        <div
+            @click="$emit('taskStateChanged', task)"
             class="task" :class="stateClass">
             <span @click="$emit('taskDeleted', task)" class="close">x</span>
-                <p>{{ task.name }}</p>
-    </div>
+            <p>{{ task.name }}</p>
+        </div>
+    </transition>
 </template>
 
 <script>
@@ -27,6 +29,18 @@ export default {
 
 
 <style>
+
+
+    .appear-enter-active, .appear-leave-active {
+    transition: transform 0.3s ;
+    }
+    .appear-enter, .appear-leave-to {
+    transform: scale(0);
+    }
+    .appear-leave, .appear-enter-to {
+    transform: scale(1);
+    }
+
     .task {
         position: relative;
         box-sizing: border-box;

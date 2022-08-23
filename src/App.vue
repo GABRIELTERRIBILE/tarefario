@@ -1,15 +1,12 @@
 <template>
 	<div id="app">
 		<h1>Tarefario
-			<transition name="fade">
-          <small v-if="incomplete">({{ incomplete }})</small>
-        </transition>
 		</h1>
-		<TasksProgress :progress="progress" />
 		<NewTask @taskAdded="addTask" />
 		<TaskGrid :tasks="tasks"
 			@taskDeleted="deleteTask" 
 			@taskStateChanged="toggleTaskState" />
+		<TasksProgress :progress="progress" />
 	</div>
 </template>
 
@@ -31,9 +28,6 @@ export default {
 			const done = this.tasks.filter(t => !t.pending).length
 			return Math.round(done / total * 100) || 0
 		}
-		// incomplete() {
-		// 	return this.task.filter(this.pending).length;
-		// }
 	},
 	watch: {
 		tasks: {
@@ -54,6 +48,7 @@ export default {
 				})
 			}
 		},
+
 		deleteTask(i) {
 			this.tasks.splice(i, 1)
 		},
@@ -72,7 +67,7 @@ export default {
 <style>
 	body {
 		font-family: 'Lato', sans-serif;
-		background: linear-gradient(to right, rgb(48, 175, 158), rgb(41, 170, 164));
+		background: linear-gradient(to right, rgb(124, 141, 139), rgb(96, 109, 146));
 		color: rgb(253, 253, 253);
 	}
 
